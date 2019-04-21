@@ -1,15 +1,23 @@
 const fs = require('fs');
 const chalk = require('chalk');
 const globby = require('globby');
-const { envs, withLatestJSDom } = require('./constants');
+const { envs, withLatestJSDom, parentEnvironment } = require('./constants');
 const globs = require('yoshi-config/globs');
+const { dependencyInstalled } = require('yoshi-helpers/utils');
 
 const modulePathIgnorePatterns = ['<rootDir>/dist/', '<rootDir>/target/'];
+
+const hasPuppeteer = dependencyInstalled('puppeteer');
+
 module.exports = {
-  globalSetup: require.resolve('jest-environment-yoshi-puppeteer/globalSetup'),
-  globalTeardown: require.resolve(
-    'jest-environment-yoshi-puppeteer/globalTeardown',
-  ),
+  ...(hasPuppeteer && {
+    globalSetup: require.resolve(
+      'jest-environment-yoshi-puppeteer/globalSetup',
+    ),
+    globalTeardown: require.resolve(
+      'jest-environment-yoshi-puppeteer/globalTeardown',
+    ),
+  }),
   watchPlugins: [
     require.resolve('jest-watch-typeahead/filename'),
     require.resolve('jest-watch-typeahead/testname'),
@@ -27,7 +35,9 @@ module.exports = {
       },
       {
         displayName: 'e2e',
-        testEnvironment: require.resolve('jest-environment-yoshi-puppeteer'),
+        testEnvironment: hasPuppeteer
+          ? require.resolve('jest-environment-yoshi-puppeteer')
+          : parentEnvironment,
         testMatch: [`<rootDir>/${globs.e2eTests}`],
         setupFiles: [
           require.resolve(
