@@ -24,7 +24,7 @@ module.exports = async ({ workingDir, projectDirName, answersFile }) => {
 
   // Use ' ' due to a technical problem in hyper when you don't see the first char after clearing the console
   console.log(
-    ' ' + chalk.underline('Please answer the following questions:\n'),
+    ' ' + chalk.underline('111Please answer the following questions:\n'),
   );
 
   const results = answersFile
