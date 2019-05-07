@@ -1,6 +1,6 @@
 {
   "name": "yoshi",
-  "version": "4.3.3",
+  "version": "4.4.1",
   "main": "./src/index.js",
   "bin": {
     "yoshi": "./bin/yoshi.js"
@@ -87,6 +87,7 @@
     "jasmine": "3.4.0",
     "jasmine-reporters": "2.3.2",
     "jest": "24.7.1",
+    "jest-cli": "24.7.1",
     "jest-teamcity-reporter": "0.9.0",
     "less": "2.7.3",
     "less-loader": "4.1.0",
@@ -136,8 +137,8 @@
     "wnpm-ci": "7.0.18",
     "write-file-webpack-plugin": "4.5.0",
     "xmldoc": "1.1.2",
-    "yoshi-config": "4.2.1",
-    "yoshi-helpers": "4.3.3",
+    "yoshi-config": "4.4.0",
+    "yoshi-helpers": "4.4.0",
     "yoshi-runtime": "1.0.50"
   },
   "devDependencies": {
@@ -156,7 +157,7 @@
     "expect": "23.6.0",
     "generic-names": "1.0.3",
     "identity-obj-proxy": "3.0.0",
-    "jest-yoshi-preset": "4.3.3",
+    "jest-yoshi-preset": "4.4.0",
     "karma": "2.0.5",
     "karma-chrome-launcher": "2.2.0",
     "karma-jasmine": "1.1.2",
